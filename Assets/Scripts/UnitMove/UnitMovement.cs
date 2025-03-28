@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class UnitMovement : MonoBehaviour
 {
+    public GameObject selectionObject;
     [SerializeField] private BaseStatusData baseStatusData;
     [Header("Movement Settings")]
     public float speed => baseStatusData.moveSpeed; // 유닛의 이동 속도
@@ -55,13 +56,17 @@ public class UnitMovement : MonoBehaviour
     {
         mainCamera = Camera.main;
         cachedTransform = transform;
-    }
+        if (selectionObject != null)
+        {
+            selectionObject.SetActive(false); // 기본적으로 비활성화
+        }
 
-    /// <summary>
-    /// 컴포넌트가 활성화될 때 호출되는 메서드
-    /// 선택된 유닛 목록을 초기화하여 메모리 누수 방지
-    /// </summary>
-    private void OnEnable()
+    }
+        /// <summary>
+        /// 컴포넌트가 활성화될 때 호출되는 메서드
+        /// 선택된 유닛 목록을 초기화하여 메모리 누수 방지
+        /// </summary>
+        private void OnEnable()
     {
         selectedUnits.Clear();
     }
@@ -196,6 +201,8 @@ public class UnitMovement : MonoBehaviour
         }
     }
 
+
+
     /// <summary>
     /// 유닛 이동 명령을 처리하는 메서드
     /// 마우스 오른쪽 클릭으로 이동 명령 실행
@@ -248,6 +255,47 @@ public class UnitMovement : MonoBehaviour
     /// <summary>
     /// 드래그 영역 내의 모든 유닛을 선택하는 메서드
     /// </summary>
+    //private void SelectUnitsInDragArea()
+    //{
+    //    UnitMovement[] allUnits = FindObjectsOfType<UnitMovement>();
+    //    int selectedCount = 0;
+
+    //    foreach (UnitMovement unit in allUnits)
+    //    {
+    //        // UnitMovement에 있는 특정 오브젝트 (인스펙터에서 할당 가능)
+    //        if (unit.selectionObject == null)
+    //        {
+    //            continue; // selectionObject가 없으면 스킵
+    //        }
+
+    //        if (dragRect.Contains((Vector2)unit.cachedTransform.position))
+    //        {
+    //            if (!selectedUnits.Contains(unit))
+    //            {
+    //                unit.isSelected = true;
+    //                selectedUnits.Add(unit);
+    //                selectedCount++;
+
+    //                // 선택된 유닛만 특정 오브젝트 활성화
+    //                unit.selectionObject.SetActive(true);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            unit.isSelected = false;
+    //            selectedUnits.Remove(unit);
+
+    //            // 선택 해제된 유닛은 특정 오브젝트 비활성화
+    //            unit.selectionObject.SetActive(false);
+    //        }
+    //    }
+
+    //    if (selectedCount > 0)
+    //    {
+    //        Debug.Log($"선택된 유닛 수: {selectedCount}");
+    //    }
+    //}
+
     private void SelectUnitsInDragArea()
     {
         UnitMovement[] allUnits = FindObjectsOfType<UnitMovement>();
@@ -262,14 +310,16 @@ public class UnitMovement : MonoBehaviour
                     unit.isSelected = true;
                     selectedUnits.Add(unit);
                     selectedCount++;
+                    unit.selectionObject.SetActive(true);
                 }
             }
             else
             {
                 unit.isSelected = false;
+                unit.selectionObject.SetActive(false);
             }
         }
-        
+
         if (selectedCount > 0)
         {
             Debug.Log($"선택된 유닛 수: {selectedCount}");
