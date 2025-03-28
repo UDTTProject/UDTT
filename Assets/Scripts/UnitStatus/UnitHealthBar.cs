@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class UnitHealthBar : MonoBehaviour
 {
+    [SerializeField] private BaseStatusData baseStatusData;
     [Header("Health Bar Settings")]
     [SerializeField] private Vector3 offset = new Vector3(0, 1.25f, 0); // 유닛 위의 오프셋 위치
 

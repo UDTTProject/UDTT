@@ -8,11 +8,11 @@ public class BaseStatusData : ScriptableObject
     /// </summary>
     public Sprite Icon;
     /// <summary>
-    /// 유닛 프리팹팹
+    /// 유닛 프리팹
     /// </summary>
     public GameObject UnitPrefab;
     /// <summary>
-    /// 코스트트
+    /// 코스트
     /// </summary>
     public float cost;
     /// <summary>
@@ -47,6 +47,14 @@ public class BaseStatusData : ScriptableObject
     /// 공격 사거리
     /// </summary>
     public float attackRange;
+    /// <summary>
+    /// 감지 범위
+    /// </summary>
+    public float detectionRange;
+    /// <summary>
+    /// 추적 범위
+    /// </summary>
+    public float trackingRange;
     /// <summary>
     /// 이동 속도
     /// </summary>
