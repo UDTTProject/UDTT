@@ -127,7 +127,7 @@ public class UnitMovement : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
-            SelectUnitsInDragArea();
+            //SelectUnitsInDragArea();
         }
     }
 
@@ -296,35 +296,35 @@ public class UnitMovement : MonoBehaviour
     //    }
     //}
 
-    private void SelectUnitsInDragArea()
-    {
-        UnitMovement[] allUnits = FindObjectsOfType<UnitMovement>();
-        int selectedCount = 0;
+    //private void SelectUnitsInDragArea()
+    //{
+    //    UnitMovement[] allUnits = FindObjectsOfType<UnitMovement>();
+    //    int selectedCount = 0;
 
-        foreach (UnitMovement unit in allUnits)
-        {
-            if (dragRect.Contains((Vector2)unit.cachedTransform.position))
-            {
-                if (!selectedUnits.Contains(unit))
-                {
-                    unit.isSelected = true;
-                    selectedUnits.Add(unit);
-                    selectedCount++;
-                    unit.selectionObject.SetActive(true);
-                }
-            }
-            else
-            {
-                unit.isSelected = false;
-                unit.selectionObject.SetActive(false);
-            }
-        }
+    //    foreach (UnitMovement unit in allUnits)
+    //    {
+    //        if (dragRect.Contains((Vector2)unit.cachedTransform.position))
+    //        {
+    //            if (!selectedUnits.Contains(unit))
+    //            {
+    //                unit.isSelected = true;
+    //                selectedUnits.Add(unit);
+    //                selectedCount++;
+    //                unit.selectionObject.SetActive(true);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            unit.isSelected = false;
+    //            unit.selectionObject.SetActive(false);
+    //        }
+    //    }
 
-        if (selectedCount > 0)
-        {
-            Debug.Log($"선택된 유닛 수: {selectedCount}");
-        }
-    }
+    //    if (selectedCount > 0)
+    //    {
+    //        Debug.Log($"선택된 유닛 수: {selectedCount}");
+    //    }
+    //}
 
     /// <summary>
     /// 모든 선택된 유닛의 이동을 중지하는 메서드
