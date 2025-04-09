@@ -2,20 +2,6 @@ using UnityEngine;
 
 public class AttackRangeCircle : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-=======
     [SerializeField] private BaseStatusData baseStatusData;
     public float attackRange => baseStatusData.attackRange;
     private LineRenderer lineRenderer;
@@ -72,4 +58,3 @@ public class AttackRangeCircle : MonoBehaviour
         }
     }
 }
->>>>>>> Stashed changes
