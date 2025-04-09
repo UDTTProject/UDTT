@@ -255,6 +255,7 @@ public class UnitMovement : MonoBehaviour
     /// <summary>
     /// 드래그 영역 내의 모든 유닛을 선택하는 메서드
     /// </summary>
+    // TODO: 에러 발생
     //private void SelectUnitsInDragArea()
     //{
     //    UnitMovement[] allUnits = FindObjectsOfType<UnitMovement>();
